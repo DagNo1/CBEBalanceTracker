@@ -2,4 +2,11 @@
 <resources>
 
     <style name="Theme.CBEBalanceTracker" parent="android:Theme.Material.Light.NoActionBar" />
+    <style name="Theme.AppSplashScreen" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/logo_s</item>
+        <item name="postSplashScreenTheme">@style/Theme.CBEBalanceTracker</item>
+    </style>
+
+    <dimen name="dp_100">100</dimen>
 </resources>
