@@ -9,6 +9,7 @@ import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
 import tech.dagimtesfaye.cbe_balance_tracker.view.home.HomeScreen
+import tech.dagimtesfaye.cbe_balance_tracker.view.onboarding.OnboardingScreen
 import tech.dagimtesfaye.cbe_balance_tracker.view.termsAndAgreements.TermsAndAgreementsScreen
 
 @OptIn(ExperimentalPermissionsApi::class)
@@ -21,7 +22,7 @@ fun NavGraph(
     )
     NavHost(
         navController = navController,
-        startDestination = if (readSmsPermission.status.isGranted) Screen.TermsAndConditions.route else Screen.TermsAndConditions.route
+        startDestination = if (readSmsPermission.status.isGranted) Screen.OnboardingScreen.route else Screen.TermsAndConditions.route
     ) {
         composable(route = Screen.TermsAndConditions.route) {
             TermsAndAgreementsScreen(onPermissionGranted = {
@@ -31,6 +32,9 @@ fun NavGraph(
         }
         composable(route = Screen.HomeScreen.route) {
             HomeScreen()
+        }
+        composable(route = Screen.OnboardingScreen.route) {
+            OnboardingScreen()
         }
     }
 }

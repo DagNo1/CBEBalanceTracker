@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">CBE Balance Tracker</string>
+    <!-- Onboarding Titles -->
+    <string name="onboarding_title_cbe_account">Manage Your CBE Account</string>
+    <string name="onboarding_title_transaction_history">View Transaction History</string>
+    <string name="onboarding_title_analytics">Financial Insights</string>
+
+    <!-- Onboarding Descriptions -->
+    <string name="onboarding_body_cbe_account">Track transactions, balances, and manage your CBE account securely from your phone.</string>
+    <string name="onboarding_body_transaction_history">Access detailed records of your transactions, including debits, credits, and more.</string>
+    <string name="onboarding_body_analytics">Analyze your spending habits and financial trends with insightful analytics and visualizations.</string>
+
 </resources>
