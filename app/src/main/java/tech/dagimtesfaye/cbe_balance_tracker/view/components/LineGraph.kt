@@ -2,10 +2,15 @@ package tech.dagimtesfaye.cbe_balance_tracker.view.components
 
 import android.util.Log
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -62,15 +67,15 @@ fun LineGraph(smsDataList: List<SmsData>) {
         .labelAndAxisLinePadding(15.dp)
         .labelData { i ->
             val date = Date(dateKeys[i])
-            val dateString = SimpleDateFormat("dd", Locale.getDefault()).format(date)
+            val dateString = SimpleDateFormat("EE", Locale.getDefault()).format(date)
             dateString
         }.labelAndAxisLinePadding(15.dp)
-        .startPadding(20.dp)
+        .startPadding(50.dp)
         .build()
     val yAxisData = AxisData.Builder()
         .steps(6)
         .backgroundColor(Color.Transparent)
-        .labelAndAxisLinePadding(20.dp)
+        .labelAndAxisLinePadding(10.dp)
         .labelData { i ->
             val yMin = pointsData.minOf { it.y }
             val yMax = pointsData.maxOf { it.y }
@@ -101,11 +106,16 @@ fun LineGraph(smsDataList: List<SmsData>) {
         backgroundColor = MaterialTheme.colorScheme.background
     )
 
-    LineChart(
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(300.dp)
-            .background(MaterialTheme.colorScheme.surface),
-        lineChartData = lineChartData
-    )
+    Column(
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        LineChart(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(300.dp)
+                .background(MaterialTheme.colorScheme.surface),
+            lineChartData = lineChartData
+        )
+        Text("This week's balance fluctuations", style = MaterialTheme.typography.bodySmall)
+    }
 }

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -57,8 +58,10 @@ fun HomeScreen(viewModel: HomeViewModel = viewModel()) {
                     )
                 }
             }
+            Divider()
             LineGraph(smsDataList = smsList)
-            Spacer(modifier = Modifier.height(16.dp))
+            Spacer(modifier = Modifier.height(10.dp))
+            Divider()
             LazyColumn {
                 items(smsList) { sms ->
                     SmsItem(sms)
