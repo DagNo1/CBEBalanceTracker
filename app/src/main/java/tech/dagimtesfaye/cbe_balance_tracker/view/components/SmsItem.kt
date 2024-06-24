@@ -69,7 +69,7 @@ fun SmsItem(sms: SmsData) {
 
 private fun convertLongToDateString(dateLong: Long): String {
     val date = Date(dateLong)
-    val format = SimpleDateFormat("MMM dd, yyyy h:mma", Locale.getDefault())
+    val format = SimpleDateFormat("MMM dd, yyyy h:mm a", Locale.getDefault())
     return format.format(date).replace("AM", "am").replace("PM", "pm")
 }
 

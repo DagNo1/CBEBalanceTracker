@@ -56,15 +56,7 @@ fun LineGraph(smsDataList: List<SmsData>) {
             Point(index.toFloat(), entry.value.toInt().toFloat())
         }
     val dateKeys: List<Long> = dailyBalances.keys.toList().reversed()
-//    val dateValues: List<Float> = dailyBalances.values.toList().reversed()
-//
-//
-//    // Log (date, value) pairs using dateKeys and pointsData
-//    dateKeys.forEachIndexed { index, key ->
-//        val date = SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(Date(key))
-//        val value = pointsData.getOrNull(index)?.y ?: 0f // Adjust as per your Point class structure
-//        Log.d("Line Graph", "Date: $date, Value: $value")
-//    }
+
     val xAxisData = AxisData.Builder().axisStepSize(63.dp)
         .backgroundColor(Color.Transparent).steps(pointsData.lastIndex)
         .labelAndAxisLinePadding(15.dp)
@@ -106,7 +98,7 @@ fun LineGraph(smsDataList: List<SmsData>) {
         xAxisData = xAxisData,
         yAxisData = yAxisData,
         gridLines = GridLines(),
-        backgroundColor = Color.White
+        backgroundColor = MaterialTheme.colorScheme.background
     )
 
     LineChart(
