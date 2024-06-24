@@ -9,24 +9,22 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
+import androidx.navigation.compose.rememberNavController
+import tech.dagimtesfaye.cbe_balance_tracker.navigation.NavGraph
 import tech.dagimtesfaye.cbe_balance_tracker.ui.theme.CBEBalanceTrackerTheme
+import tech.dagimtesfaye.cbe_balance_tracker.view.home.HomeScreen
 import tech.dagimtesfaye.cbe_balance_tracker.view.home.HomeViewModel
 
 class MainActivity : ComponentActivity() {
-    private val viewModel: HomeViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         installSplashScreen()
         setContent {
             CBEBalanceTrackerTheme {
+                val navController = rememberNavController()
                 // A surface container using the 'background' color from the theme
-                Surface(
-                    modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
-                ) {
-
-                }
+                NavGraph(navController = navController)
             }
         }
     }
