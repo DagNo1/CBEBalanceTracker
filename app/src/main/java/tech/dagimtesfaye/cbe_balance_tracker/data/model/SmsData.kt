@@ -13,7 +13,7 @@ data class SmsData(
 ) {
     companion object {
         fun fromSms(body: String, date: Long): SmsData? {
-            Log.d("From SMS", "Raw SMS : $body")
+            // Log.d("From SMS", "Raw SMS : $body")
 
             val balanceRegex = "Your Current Balance is ETB (\\d+(?:,\\d{3})*(?:\\.\\d{1,2})?)".toRegex()
             val amountRegex = "with ETB (\\d+(,\\d{3})*(\\.\\d{1,2})?)".toRegex()
@@ -32,7 +32,7 @@ data class SmsData(
                 else -> null
             }
             val receiptLink = linkMatch?.value
-            Log.d("From Sms", amountMatch.toString());
+            // Log.d("From Sms", amountMatch.toString());
             val amount = amountMatch?.groups?.get(1)?.value?.replace(",", "")
 
 
@@ -45,7 +45,7 @@ data class SmsData(
                     receiptLink = receiptLink
                 )
             } else {
-                Log.e("From SMS", "Data Not Parsed: RB=$remainingBalance, AM=$amount, DC=$debitOrCredit")
+                Log.e("From SMS Data Not Parsed: ", body)
                 null
             }
         }

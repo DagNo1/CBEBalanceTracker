@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId = "tech.dagimtesfaye.cbe_balance_tracker"
-        minSdk = 24
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -73,4 +73,5 @@ dependencies {
     implementation (libs.androidx.lifecycle.viewmodel.compose)
     implementation (libs.accompanist.permissions)
     implementation (libs.androidx.navigation.compose)
+    implementation (libs.ycharts)
 }

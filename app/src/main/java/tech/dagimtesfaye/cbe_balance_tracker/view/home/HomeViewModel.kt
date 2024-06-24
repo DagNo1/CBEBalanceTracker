@@ -19,9 +19,9 @@ class HomeViewModel : ViewModel() {
     fun getSms(context: Context) {
         viewModelScope.launch {
             try {
-                Log.d("HomeViewModel", "Fetching SMS messages from repository...")
+                // Log.d("HomeViewModel", "Fetching SMS messages from repository...")
                 _smsList.value = repository.fetchSms(context)
-                Log.d("HomeViewModel", "Fetch successful.")
+                // Log.d("HomeViewModel", "Fetch successful.")
             } catch (e: Exception) {
                 Log.e("HomeViewModel", "Error fetching SMS", e)
                 // Handle error

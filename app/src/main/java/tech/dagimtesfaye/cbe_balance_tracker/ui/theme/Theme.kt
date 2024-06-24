@@ -50,7 +50,7 @@ fun CBEBalanceTrackerTheme(
             if (darkTheme) dynamicDarkColorScheme(context) else dynamicLightColorScheme(context)
         }
 
-        darkTheme -> DarkColorScheme
+        darkTheme -> LightColorScheme /// Had to this due to lack of time to setup dark theme
         else -> LightColorScheme
     }
     val view = LocalView.current
