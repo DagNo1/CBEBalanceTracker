@@ -1,17 +1,13 @@
 package tech.dagimtesfaye.cbe_balance_tracker.view.home
 
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
@@ -20,7 +16,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import tech.dagimtesfaye.cbe_balance_tracker.data.model.SmsData
+import tech.dagimtesfaye.cbe_balance_tracker.view.components.SmsItem
 
 
 @Composable
@@ -30,11 +26,11 @@ fun HomeScreen(viewModel: HomeViewModel = viewModel()) {
     LaunchedEffect(Unit) {
         viewModel.getSms(context)
     }
-    Column(modifier = Modifier.padding(16.dp)) {
+    Column(modifier = Modifier.padding(start = 16.dp, end = 16.dp)) {
         Surface(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(100.dp)
+                .height(200.dp)
         ) {
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -43,19 +39,5 @@ fun HomeScreen(viewModel: HomeViewModel = viewModel()) {
                 SmsItem(sms)
             }
         }
-    }
-}
-
-@Composable
-fun SmsItem(sms: SmsData) {
-    Column(modifier = Modifier.padding(8.dp)) {
-        Text(text = "Date: ${sms.date}", style = MaterialTheme.typography.bodyLarge)
-        Text(text = "Type: ${sms.debitOrCredit}", style = MaterialTheme.typography.bodyMedium)
-        Text(text = "Amount: ${sms.amount}", style = MaterialTheme.typography.bodyMedium)
-        Text(text = "Balance: ${sms.remainingBalance}", style = MaterialTheme.typography.bodyMedium)
-        sms.receiptLink?.let { link ->
-            Text(text = "Receipt: $link", style = MaterialTheme.typography.bodyMedium)
-        }
-//        Spacer(modifier = Modifier.height(8.dp))
     }
 }

@@ -5,9 +5,6 @@ import android.net.Uri
 import android.provider.Telephony
 import android.util.Log
 import tech.dagimtesfaye.cbe_balance_tracker.data.model.SmsData
-import java.text.SimpleDateFormat
-import java.util.Date
-import java.util.Locale
 
 class SmsRepository {
 
@@ -31,7 +28,7 @@ class SmsRepository {
             while (it.moveToNext()) {
                 val date = it.getLong(dateColumn)
                 val body = it.getString(bodyColumn)
-                val smsData = SmsData.fromSms(body, convertLongToDateString(date))
+                val smsData = SmsData.fromSms(body, date)
                 if (smsData != null) {
                     smsList.add(smsData)
                     Log.d("SmsRepository", "SMS Data parsed: $smsData")
@@ -42,9 +39,5 @@ class SmsRepository {
         Log.d("SmsRepository", "Fetch complete. Total SMS count: ${smsList.size}")
         return smsList
     }
-    private fun convertLongToDateString(dateLong: Long): String {
-        val date = Date(dateLong)
-        val format = SimpleDateFormat("dd/MM/yyyy HH:mm", Locale.getDefault())
-        return format.format(date)
-    }
+
 }
