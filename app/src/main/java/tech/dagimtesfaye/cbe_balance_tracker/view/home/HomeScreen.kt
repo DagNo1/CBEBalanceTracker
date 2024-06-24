@@ -31,15 +31,18 @@ fun HomeScreen(viewModel: HomeViewModel = viewModel()) {
         viewModel.getSms(context)
     }
     Column(modifier = Modifier.padding(16.dp)) {
-        Surface (
-            modifier = Modifier.fillMaxWidth().height(100.dp)
-        ){
+        Surface(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(100.dp)
+        ) {
         }
         Spacer(modifier = Modifier.height(16.dp))
         LazyColumn {
-                items(smsList) { sms ->
-                    SmsItem(sms)
-                }}
+            items(smsList) { sms ->
+                SmsItem(sms)
+            }
+        }
     }
 }
 
