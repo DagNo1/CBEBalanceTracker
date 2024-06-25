@@ -35,17 +35,12 @@ private fun TermsAndAgreements(onPermissionGranted: () -> Unit) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            val textToShow = if (readSmsPermission.status.shouldShowRationale) {
-                "Permission is important for this app. Please grant the permission."
-            } else {
-                "Permission required for this application to work. " +
-                        "Please grant the permission"
-            }
             Text(
                 modifier = Modifier
                     .fillMaxWidth(0.8f)
                     .padding(bottom = 20.dp),
-                text = textToShow,
+                text = "Permission required for this application to work. " +
+                        "Please grant the sms read permission",
                 textAlign = TextAlign.Center
             )
             Button(onClick = { readSmsPermission.launchPermissionRequest() }) {

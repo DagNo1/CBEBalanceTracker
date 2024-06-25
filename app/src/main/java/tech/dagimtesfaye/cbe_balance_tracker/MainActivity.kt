@@ -19,6 +19,7 @@ class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Used the splash screen api
         installSplashScreen()
         setContent {
             CBEBalanceTrackerTheme {

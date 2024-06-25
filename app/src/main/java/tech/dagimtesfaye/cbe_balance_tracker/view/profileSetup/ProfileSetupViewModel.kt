@@ -38,16 +38,18 @@ class ProfileSetupViewModel : ViewModel() {
     }
 
     fun onNextClicked(context: Context, navController: NavController) {
+        // Store the name in shared preference and navigate to the next page
         val sharedPreferencesManager = SharedPreferencesManager(context = context)
         sharedPreferencesManager.saveName(_name.value!!)
         navController.navigate(Screen.ProfilePinSetupScreen.route)
     }
     fun onPinSetScreenNextClicked(context: Context, navController: NavController) {
+        // Store the pin in shared preference and navigate to the next page
         val sharedPreferencesManager = SharedPreferencesManager(context = context)
         sharedPreferencesManager.savePin(_pin.value!!)
         sharedPreferencesManager.saveFirstInstance()
         navController.navigate(Screen.HomeScreen.route){
-            popUpTo(0)
+            popUpTo(0) //back button exits the app
         }
     }
 }

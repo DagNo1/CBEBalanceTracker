@@ -28,11 +28,19 @@ fun NavGraph(
     val context = LocalContext.current
     val sharedPreferencesManager = SharedPreferencesManager(context = context)
     val isFirstInstance = sharedPreferencesManager.isFirstInstance()
+
+
+    // Set the startDestination in the NavHost based on conditions
+    // If the user is opening the app for the first time = redirect them to onboarding
+    // If the user has used the app before but if the sms read permission is not accepted = redirect them to TermsAndConditions
+    //  If the user has used the app before and noting is wrong = redirect them to login
     NavHost(
         navController = navController,
-        startDestination = if (isFirstInstance) Screen.OnboardingScreen.route
-        else if (!readSmsPermission.status.isGranted) Screen.TermsAndConditions.route
-        else Screen.Login.route
+        startDestination = when {
+            isFirstInstance -> Screen.OnboardingScreen.route
+            !readSmsPermission.status.isGranted -> Screen.TermsAndConditions.route
+            else -> Screen.Login.route
+        }
     ) {
         composable(route = Screen.TermsAndConditions.route) {
             TermsAndAgreementsScreen(onPermissionGranted = {

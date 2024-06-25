@@ -89,7 +89,6 @@ fun OnboardingScreen(
                 val item = onboardingItems.getOrNull(page)
                 if (item != null) {
                     // Display the content of the onboarding item
-                    // You can customize this section based on your item structure
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
@@ -167,6 +166,7 @@ fun OnboardingScreen(
                 contentAlignment = Alignment.BottomEnd
             ) {
                 if (pagerState.currentPage == 2) {
+                    // This button only appears on the last item of the onboarding screen
                     Button(
                         onClick = {
                             navController.navigate(Screen.ProfileSetupScreen.route){
