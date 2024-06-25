@@ -80,7 +80,6 @@ fun ProfileSetupScreen(
                 .padding(vertical = 10.dp)
         )
 
-        // SMS permission checkbox
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Start,
@@ -103,7 +102,6 @@ fun ProfileSetupScreen(
             )
         }
 
-        // Terms and conditions checkbox
         Row(
             verticalAlignment = Alignment.CenterVertically,
             horizontalArrangement = Arrangement.Start,
@@ -120,7 +118,6 @@ fun ProfileSetupScreen(
             )
         }
 
-        // Next button
         Button(
             onClick = { viewModel.onNextClicked(context, navController) },
             modifier = Modifier
@@ -128,7 +125,11 @@ fun ProfileSetupScreen(
                 .fillMaxWidth(),
             enabled = name.isNotBlank() && readSmsPermission.status.isGranted && termsAccepted
         ) {
-            Text("Next")
+            Text(
+                "Next",
+                style = MaterialTheme.typography.titleMedium,
+                fontWeight = FontWeight.Bold,
+            )
         }
     }
 }

@@ -1,4 +1,4 @@
-package tech.dagimtesfaye.cbe_balance_tracker.view.profileSetup
+package tech.dagimtesfaye.cbe_balance_tracker.view.login
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -21,14 +21,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
+import tech.dagimtesfaye.cbe_balance_tracker.data.repository.SharedPreferencesManager
 import tech.dagimtesfaye.cbe_balance_tracker.view.components.OtpTextField
 
 @Composable
-fun ProfilePinSetupScreen(
-    navController: NavController, viewModel: ProfileSetupViewModel = viewModel()
+fun LoginScreen(
+    navController: NavController, viewModel: LoginViewModel = viewModel()
 ) {
     val context = LocalContext.current
+    val sharedPreferencesManager = SharedPreferencesManager(context = context)
+    val name = sharedPreferencesManager.getName()
     val pin by viewModel.pin.observeAsState("")
+    val errorText by viewModel.errorText.observeAsState("")
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -37,15 +41,8 @@ fun ProfilePinSetupScreen(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Text(
-            text = "Almost Done!",
+            text = "Welcome Back $name!",
             style = MaterialTheme.typography.headlineSmall,
-            fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(vertical = 20.dp),
-            textAlign = TextAlign.Center
-        )
-        Text(
-            text = "Just need you to set a passcode.",
-            style = MaterialTheme.typography.bodyLarge,
             fontWeight = FontWeight.Bold,
             modifier = Modifier.padding(vertical = 20.dp),
             textAlign = TextAlign.Center
@@ -57,10 +54,18 @@ fun ProfilePinSetupScreen(
                 viewModel.onPinChange(value)
             }
         )
+        Text(
+            text = errorText,
+            color = MaterialTheme.colorScheme.error,
+            style = MaterialTheme.typography.bodySmall,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(vertical = 20.dp),
+            textAlign = TextAlign.Center
+        )
         Spacer(modifier = Modifier.height(20.dp))
         Button(
             onClick = {
-                viewModel.onPinSetScreenNextClicked(context, navController)
+                viewModel.authenticate(context, navController)
             },
             modifier = Modifier
                 .padding(vertical = 20.dp)
@@ -68,7 +73,7 @@ fun ProfilePinSetupScreen(
             enabled = pin.length == 4
         ) {
             Text(
-                "Finish",
+                "Login",
                 style = MaterialTheme.typography.titleMedium,
                 fontWeight = FontWeight.Bold,
             )
