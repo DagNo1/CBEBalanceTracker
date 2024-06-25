@@ -38,13 +38,16 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import tech.dagimtesfaye.cbe_balance_tracker.R
 import tech.dagimtesfaye.cbe_balance_tracker.data.model.OnboardingItem
+import tech.dagimtesfaye.cbe_balance_tracker.navigation.Screen
 
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun OnboardingScreen(
+    navController: NavController,
     modifier: Modifier = Modifier,
     imageCornerRadius: Dp = 16.dp,
     imageHeight: Dp = 250.dp,
@@ -166,7 +169,9 @@ fun OnboardingScreen(
                 if (pagerState.currentPage == 2) {
                     Button(
                         onClick = {
-                            // go to other page
+                            navController.navigate(Screen.ProfileSetupScreen.route){
+                                popUpTo(0)
+                            }
                         },
                         modifier = Modifier.height(45.dp),
                         colors = ButtonDefaults.buttonColors(containerColor = Color.Transparent)

@@ -11,6 +11,15 @@ class SharedPreferencesManager(context: Context) {
         private const val PREFS_NAME = "my_prefs"
         private const val KEY_NAME = "key_name"
         private const val KEY_PIN = "key_pin"
+        private const val KEY_FIRST_INSTANCE= "key_first_instance"
+    }
+
+    fun saveFirstInstance() {
+        prefs.edit().putBoolean(KEY_FIRST_INSTANCE, false).apply()
+    }
+
+    fun isFirstInstance(): Boolean {
+        return prefs.getBoolean(KEY_FIRST_INSTANCE, true)
     }
 
     fun saveName(name: String) {

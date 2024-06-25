@@ -45,6 +45,7 @@ class ProfileSetupViewModel : ViewModel() {
     fun onPinSetScreenNextClicked(context: Context, navController: NavController) {
         val sharedPreferencesManager = SharedPreferencesManager(context = context)
         sharedPreferencesManager.savePin(_pin.value!!)
+        sharedPreferencesManager.saveFirstInstance()
         navController.navigate(Screen.HomeScreen.route){
             popUpTo(0)
         }
