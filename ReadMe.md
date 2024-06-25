@@ -27,13 +27,6 @@ Welcome to the CBE Balance Tracker App! This app helps you track your balance an
 2. Open the project in Android Studio.
 3. Connect your Android device or use an emulator.
 4. Build and run the project.
-## Screenshots
-![Home](
-https://github.com/DagNo1/CBEBalanceTracker/blob/master/screenshots/Home.jpg)
-![Login](
-https://github.com/DagNo1/CBEBalanceTracker/blob/master/screenshots/Login.jpg)
-![ProfileSetup](
-https://github.com/DagNo1/CBEBalanceTracker/blob/master/screenshots/ProfileSetup.jpg)
 
 # Architecture
 
@@ -149,3 +142,11 @@ Where:
 
 By adhering to Conventional Commits, i aim to maintain clear and meaningful commit messages that enhance collaboration and project transparency.
 
+
+## Screenshots
+![Home](
+https://github.com/DagNo1/CBEBalanceTracker/blob/master/screenshots/Home.jpg)
+![Login](
+https://github.com/DagNo1/CBEBalanceTracker/blob/master/screenshots/Login.jpg)
+![ProfileSetup](
+https://github.com/DagNo1/CBEBalanceTracker/blob/master/screenshots/ProfileSetup.jpg)
