@@ -1,7 +1,6 @@
 package tech.dagimtesfaye.cbe_balance_tracker.view.profileSetup
 
 import android.content.Context
-import androidx.compose.ui.platform.LocalContext
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -13,6 +12,10 @@ class ProfileSetupViewModel : ViewModel() {
     private val _name = MutableLiveData("")
     val name: LiveData<String> get() = _name
 
+
+    private val _pin = MutableLiveData("")
+    val pin: LiveData<String> get() = _pin
+
     private val _smsPermissionGranted = MutableLiveData(false)
     val smsPermissionGranted: LiveData<Boolean> get() = _smsPermissionGranted
 
@@ -21,6 +24,9 @@ class ProfileSetupViewModel : ViewModel() {
 
     fun onNameChanged(newName: String) {
         _name.value = newName
+    }
+    fun onPinChange(newPin: String) {
+        _pin.value = newPin
     }
 
     fun onSmsPermissionChecked(checked: Boolean) {
@@ -35,6 +41,13 @@ class ProfileSetupViewModel : ViewModel() {
         val sharedPreferencesManager = SharedPreferencesManager(context = context)
         sharedPreferencesManager.saveName(_name.value!!)
         navController.navigate(Screen.ProfilePinSetupScreen.route)
+    }
+    fun onPinSetScreenNextClicked(context: Context, navController: NavController) {
+        val sharedPreferencesManager = SharedPreferencesManager(context = context)
+        sharedPreferencesManager.savePin(_pin.value!!)
+        navController.navigate(Screen.HomeScreen.route){
+            popUpTo(0)
+        }
     }
 }
 

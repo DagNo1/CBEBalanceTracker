@@ -42,7 +42,7 @@ fun NavGraph(
             ProfileSetupScreen(navController)
         }
         composable(route = Screen.ProfilePinSetupScreen.route) {
-            ProfilePinSetupScreen()
+            ProfilePinSetupScreen(navController)
         }
     }
 }

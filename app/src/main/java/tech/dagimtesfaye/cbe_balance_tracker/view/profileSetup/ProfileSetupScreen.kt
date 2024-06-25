@@ -7,38 +7,37 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
 import androidx.compose.material3.Checkbox
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextField
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.input.ImeAction
-import androidx.compose.ui.text.input.KeyboardType
-import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
-import androidx.compose.runtime.*
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.isGranted
 import com.google.accompanist.permissions.rememberPermissionState
-import tech.dagimtesfaye.cbe_balance_tracker.navigation.Screen
 
 @OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun ProfileSetupScreen(
     navController: NavController,
-    viewModel: ProfileSetupViewModel = viewModel()) {
+    viewModel: ProfileSetupViewModel = viewModel()
+) {
     val readSmsPermission = rememberPermissionState(
         Manifest.permission.READ_SMS
     )
@@ -66,7 +65,7 @@ fun ProfileSetupScreen(
         )
 
         OutlinedTextField(
-            value = name ?: "",
+            value = name,
             onValueChange = { viewModel.onNameChanged(it) },
             label = { Text("Enter your name") },
             keyboardOptions = KeyboardOptions(
@@ -90,11 +89,11 @@ fun ProfileSetupScreen(
             Checkbox(
                 checked = smsPermissionGranted || readSmsPermission.status.isGranted,
                 onCheckedChange = {
-                     if(!readSmsPermission.status.isGranted) {
-                         readSmsPermission.launchPermissionRequest()
-                     } else {
-                         viewModel.onSmsPermissionChecked(it)
-                     }
+                    if (!readSmsPermission.status.isGranted) {
+                        readSmsPermission.launchPermissionRequest()
+                    } else {
+                        viewModel.onSmsPermissionChecked(it)
+                    }
                 }
             )
             Text(
