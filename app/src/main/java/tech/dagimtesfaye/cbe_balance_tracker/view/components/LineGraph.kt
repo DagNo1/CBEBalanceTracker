@@ -5,6 +5,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.material3.Divider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -107,6 +108,8 @@ fun LineGraph(smsDataList: List<SmsData>) {
     Column(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text("This week's total balance graph", style = MaterialTheme.typography.bodySmall)
+        Divider()
         LineChart(
             modifier = Modifier
                 .fillMaxWidth()
@@ -114,6 +117,5 @@ fun LineGraph(smsDataList: List<SmsData>) {
                 .background(MaterialTheme.colorScheme.surface),
             lineChartData = lineChartData
         )
-        Text("This week's balance fluctuations", style = MaterialTheme.typography.bodySmall)
     }
 }

@@ -21,6 +21,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import tech.dagimtesfaye.cbe_balance_tracker.view.components.LineGraph
@@ -39,8 +40,11 @@ fun HomeScreen(viewModel: HomeViewModel = viewModel()) {
             Box(
                 modifier = Modifier
                     .padding(top = 16.dp, bottom = 16.dp)
-                    .background(color = MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(10.dp))
-            )  {
+                    .background(
+                        color = MaterialTheme.colorScheme.primary,
+                        shape = RoundedCornerShape(10.dp)
+                    )
+            ) {
                 Column(
                     modifier = Modifier.fillMaxWidth(),
                     horizontalAlignment = Alignment.CenterHorizontally
@@ -58,9 +62,14 @@ fun HomeScreen(viewModel: HomeViewModel = viewModel()) {
                     )
                 }
             }
-            Divider()
             LineGraph(smsDataList = smsList)
             Spacer(modifier = Modifier.height(10.dp))
+            Text(
+                "All Transactions",
+                style = MaterialTheme.typography.bodySmall,
+                textAlign = TextAlign.Center,
+                modifier = Modifier.fillMaxWidth()
+            )
             Divider()
             LazyColumn {
                 items(smsList) { sms ->

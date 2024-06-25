@@ -2,6 +2,7 @@ package tech.dagimtesfaye.cbe_balance_tracker.view.components
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
@@ -56,13 +57,21 @@ fun SmsItem(sms: SmsData) {
                     .fillMaxHeight()
                     .weight(3f)
             )
-            Text(
-                text = convertLongToDateString(sms.date),
-                style = MaterialTheme.typography.bodySmall,
+            Column(
                 modifier = Modifier
                     .fillMaxHeight()
                     .weight(3f),
-            )
+            ) {
+                Text(
+                    text = "Remaining: " + sms.remainingBalance,
+                    style = MaterialTheme.typography.bodySmall,
+                    )
+                Text(
+                    text = convertLongToDateString(sms.date),
+                    style = MaterialTheme.typography.bodySmall,
+                    modifier = Modifier
+                )
+            }
         }
     }
 }
